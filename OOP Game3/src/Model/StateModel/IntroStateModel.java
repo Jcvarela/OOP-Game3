@@ -3,10 +3,9 @@ package Model.StateModel;
 import Manager.FileDirectory;
 import Manager.GameStateManager;
 import Model.BasicSelectInterface;
-import Model.Model;
 import Other.Animation;
 
-
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.RescaleOp;
@@ -41,18 +40,18 @@ public class IntroStateModel implements StateModel, BasicSelectInterface {
             System.err.println("IntroStateModel error: introImage was not loaded");
             return null;
         }
-
-        BufferedImage temp = this.introImage.getImage();
-
-        BufferedImage image = new BufferedImage(temp.getWidth(),temp.getHeight(),BufferedImage.TRANSLUCENT);
-        Graphics2D g = image.createGraphics();
-
-        float[] scales = {1f,1f,1f,this.alpha};
-        float[] offsets = new float[4];
-        RescaleOp rop = new RescaleOp(scales,offsets,null);
         
-       // g.drawImage(temp,rop,0,0);
-
+        BufferedImage temp = this.introImage.getImage();
+        int width = temp.getWidth();
+        int height = temp.getHeight();
+        
+        BufferedImage image = new BufferedImage(width,height,BufferedImage.TYPE_3BYTE_BGR);
+        Graphics2D g = (Graphics2D) image.getGraphics();
+        g.drawImage(temp,0,0,width,height,null);
+        
+        g.setColor(new Color(0f,0f,0f,this.alpha));
+        g.fillRect(0, 0, width, height);
+        
         return image;
     }
 
@@ -81,16 +80,16 @@ public class IntroStateModel implements StateModel, BasicSelectInterface {
         long temp = System.currentTimeMillis() - startTime;
 
         if(temp < FADE_IN){
-            alpha = (float)(temp/FADE_IN);
+            alpha = 1f - (float)temp/FADE_IN;
         }
         else if(temp < STAY){
-            alpha = 1f;
+            alpha = 0f;
         }
         else if (temp < FADE_OUT) {
-            alpha = 1f - (float)((temp - STAY)/(FADE_OUT - STAY));
+            alpha =(((float)temp - STAY)/(FADE_OUT - STAY));
         }
         else {
-            alpha = 0f;
+            alpha = 1f;
             switchState = true;
         }
     }
