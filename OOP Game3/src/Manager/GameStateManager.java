@@ -7,7 +7,7 @@ import GameState.*;
 
 public class GameStateManager {
 	
-	public static final int NUM_STATE = 1;
+	public static final int NUM_STATE = 2;
 	public static final int INTRO = 0;
 	public static final int TEST = 1;
 
@@ -22,6 +22,7 @@ public class GameStateManager {
 				gameStates = new IntroState(this);
 				break;
 		}
+		System.out.println("here");
 	}
 
 
@@ -41,7 +42,7 @@ public class GameStateManager {
 
 
 	public void setState(int i) {
-
+		
 		if (i >= 0 && i < NUM_STATE) {
 			previousState = currentState;
 			unloadState(previousState);

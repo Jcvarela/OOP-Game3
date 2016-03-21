@@ -19,10 +19,6 @@ public class IntroStateViewport extends View{
     }
 
     @Override
-    public void init() {
-    }
-
-    @Override
     public void render(Graphics2D g) {
         g.setBackground(new Color((int)(Math.random()*256),0,0));
         g.drawRect(0,0,WIDTH,HEIGHT);
@@ -31,8 +27,11 @@ public class IntroStateViewport extends View{
         g.drawImage(im,0,0,null);
     }
 
-    @Override
-    protected IntroStateModel getModel() {
-        return (IntroStateModel)model;
-    }
+	@Override
+	public IntroStateModel getModel() {
+		// TODO Auto-generated method stub
+		return (IntroStateModel)model;
+	}
+
+
 }

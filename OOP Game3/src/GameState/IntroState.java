@@ -1,8 +1,10 @@
 package GameState;
 
 import Controller.ImputController.BasicInputController;
+import Controller.StateController.IntroStateController;
 import Manager.GameStateManager;
 import Model.StateModel.IntroStateModel;
+import Model.StateModel.StateModel;
 import View.StateViewport.IntroStateViewport;
 
 import java.awt.*;
@@ -12,9 +14,7 @@ import java.awt.*;
  */
 public class IntroState extends GameState{
 
-    private IntroStateModel model;
-    private BasicInputController controller;
-    private IntroStateViewport view;
+    private IntroStateController controller;
 
     public IntroState(GameStateManager gsm){
         super(gsm);
@@ -23,22 +23,16 @@ public class IntroState extends GameState{
 
     @Override
     public void init(){
-        model = new IntroStateModel();
-        controller = new BasicInputController(model);
-        view = new IntroStateViewport(model);
+    	controller = new IntroStateController(gsm, new IntroStateModel());
     }
+    
     @Override
     public void update(){
-        handleInput();
+    	controller.update();
     }
 
     @Override
     public void render(Graphics2D g){
-        view.render(g);
-    }
-
-    @Override
-    public void handleInput(){
-        controller.update();
+        controller.render(g);
     }
 }

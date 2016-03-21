@@ -12,6 +12,11 @@ public class Animation {
 	
 	private int timesPlayed;
 	
+	public Animation(BufferedImage image){
+		//TODO: this constructor needs to be change
+		frames = new BufferedImage[1];
+		frames[0] = image;
+	}
 	public Animation(BufferedImage[] frames){
 		this(frames, 2);
 	}

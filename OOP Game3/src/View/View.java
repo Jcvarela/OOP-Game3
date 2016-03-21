@@ -10,8 +10,8 @@ import java.awt.Graphics2D;
  * Created by jcvarela on 3/17/2016.
  */
 public abstract class View {
-    protected int WIDTH = Game.WIDTH;
-    protected int HEIGHT = Game.HEIGHT;
+    protected static final int WIDTH = Game.WIDTH;
+    protected static final int HEIGHT = Game.HEIGHT;
 
     protected Model model;
 
@@ -19,9 +19,8 @@ public abstract class View {
         this.model = model;
     }
 
-    public  abstract void init();
-
     public abstract void render(Graphics2D g);
+    
+    public abstract Model getModel();
 
-    protected abstract Model getModel();
 }

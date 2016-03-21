@@ -1,5 +1,6 @@
 package Model.StateModel;
 
+import Manager.FileDirectory;
 import Manager.GameStateManager;
 import Model.BasicSelectInterface;
 import Model.Model;
@@ -10,11 +11,13 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.RescaleOp;
 
+import Loading.LoadImage;
+
 
 /**
  * Created by jcvarela on 3/17/2016.
  */
-public class IntroStateModel implements Model, BasicSelectInterface {
+public class IntroStateModel implements StateModel, BasicSelectInterface {
 
     //TIME IN MILLISECONDS
     private final long FADE_IN = 3000;
@@ -47,7 +50,8 @@ public class IntroStateModel implements Model, BasicSelectInterface {
         float[] scales = {1f,1f,1f,this.alpha};
         float[] offsets = new float[4];
         RescaleOp rop = new RescaleOp(scales,offsets,null);
-        g.drawImage(temp,rop,0,0);
+        
+       // g.drawImage(temp,rop,0,0);
 
         return image;
     }
@@ -61,13 +65,6 @@ public class IntroStateModel implements Model, BasicSelectInterface {
         this.introImage = image;
     }
 
-    public int getNextStageID(){
-        return NEXT_STAGE_ID;
-    }
-    public boolean canItSwitchState(){
-        return switchState;
-    }
-
 
 
     @Override
@@ -75,6 +72,8 @@ public class IntroStateModel implements Model, BasicSelectInterface {
         startTime = System.currentTimeMillis();
         alpha = 0f;
         switchState = false;
+        
+        introImage = new Animation(LoadImage.loadBufferedImage(FileDirectory.INTRO_STATE));
     }
 
     @Override
@@ -98,11 +97,17 @@ public class IntroStateModel implements Model, BasicSelectInterface {
 
     @Override
     public void select() {
-        switchState = true;
+       switchState = true;
     }
 
     @Override
     public void back() {
 
     }
+
+
+	@Override
+	public int nextState() {
+		return (switchState)? NEXT_STAGE_ID: -1;
+	}
 }

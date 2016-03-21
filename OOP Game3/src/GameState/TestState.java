@@ -4,14 +4,14 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import Entity.Entity;
+import ID.AnimationID;
+import ID.AnimationID.ActionID;
+import ID.AnimationID.DirectionID;
 import Manager.FileDirectory;
 import Manager.GameStateManager;
 import Manager.Keys;
-import Manager.LoadManager;
+import Loading.LoadImage;
 import Other.Animation;
-import Other.AnimationID;
-import Other.AnimationID.ActionID;
-import Other.AnimationID.DirectionID;
 
 public class TestState extends GameState{
 	
@@ -25,7 +25,7 @@ public class TestState extends GameState{
 
 	@Override
 	public void init() {
-		LoadManager.loadEntitySprites(FileDirectory.AVATAR,e);
+		LoadImage.loadEntitySprites(FileDirectory.AVATAR,e);
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class TestState extends GameState{
 	}
 	DirectionID d = DirectionID.Down;
 	
-	@Override
+	
 	public void handleInput() {
 		if(Keys.isDown(Keys.UP)){
 			e.setActive(AnimationID.getID(ActionID.Move, DirectionID.Up));

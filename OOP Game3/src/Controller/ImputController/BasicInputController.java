@@ -53,4 +53,9 @@ public class BasicInputController extends Controller{
 
     }
 
+	@Override
+	protected Model getModel() {
+		return model;
+	}
+
 }

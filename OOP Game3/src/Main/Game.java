@@ -17,7 +17,7 @@ public class Game extends  JPanel implements Runnable,KeyListener{
 	//canvas dimensions
 	public static final int WIDTH = 300;
 	public static final int HEIGHT = WIDTH*4/5;
-	public static final int SCALE = 6; 
+	public static final int SCALE = 3; 
 	
 	// GAME LOOP
 	private Thread thread;

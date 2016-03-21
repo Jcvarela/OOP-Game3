@@ -11,6 +11,6 @@ public class FileDirectory {
 	//STATE
 	public static final String STATE = "src/resources/State";
 
-	public static final String INTRO = STATE + "/Intro";
+	public static final String INTRO_STATE = STATE + "/IntroState/intro.png";
 
 }

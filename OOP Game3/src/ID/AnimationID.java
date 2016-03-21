@@ -1,10 +1,6 @@
-package Other;
+package ID;
 
-public class AnimationID {
-
-	public enum a{
-		x,b,c,d;
-	}
+public class AnimationID implements ID{
 
 	public enum ActionID {
 		// (actionName where)

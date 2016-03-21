@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
 import Manager.FileDirectory;
-import Manager.LoadManager;
+import Loading.LoadImage;
 import Other.Animation;
 
 public class Entity {
@@ -19,7 +19,7 @@ public class Entity {
 	
 	//TODO:remove this functions
 	public void init(){
-		LoadManager.loadEntitySprites(FileDirectory.AVATAR, this);
+		LoadImage.loadEntitySprites(FileDirectory.AVATAR, this);
 		activeSprite = 0;
 	}
 
