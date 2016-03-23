@@ -26,6 +26,7 @@ public class IntroStateController extends StateController{
 	public void update() {
 		basicInputController.update();
 		gsm.setState(getModel().nextState());
+		getModel().update();
 	}
 
 	@Override
